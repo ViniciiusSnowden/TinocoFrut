@@ -12,4 +12,9 @@ export class Usuario {
     @Column()
     email: string
 
+    constructor(nome, email){
+        this.nome = nome;
+        this.email = email;
+    }
+
 }

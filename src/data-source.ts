@@ -1,17 +1,27 @@
 import "reflect-metadata"
 import { DataSource } from "typeorm"
-import { User } from "./entity/Usuario"
+
 
 export const AppDataSource = new DataSource({
     type: "postgres",
     host: "localhost",
-    port: 5432,
-    username: "test",
-    password: "test",
-    database: "test",
+    port: 5433,
+    username: "postgres",
+    password: "paulo",
+    database: "tonico",
     synchronize: true,
     logging: false,
-    entities: [User],
-    migrations: [],
+    entities: [
+        "src/entity/**/*.ts"
+    ],
+    migrations: [
+        "src/migration/**/*.ts"
+    ],
     subscribers: [],
 })
+
+console.log(`App conectado ao BD ${AppDataSource.options.database}`);
+
+process.on('SIGINT', () => {
+    AppDataSource.close().then(() => console.log('Conexão com o BD fechada'));
+});

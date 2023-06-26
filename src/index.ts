@@ -4,9 +4,7 @@ import { Usuario } from "./entity/Usuario"
 AppDataSource.initialize().then(async () => {
 
     console.log("Inserting a new user into the database...")
-    const user = new Usuario()
-    user.nome = "Timber"
-    user.email = "timber@mail.com"
+    const user = new Usuario("Timber", "timber@mail.com")
 
     await AppDataSource.manager.save(user)
     console.log("Saved a new user with id: " + user.id)
