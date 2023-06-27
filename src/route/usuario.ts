@@ -10,9 +10,12 @@ const usuarioCtrl = new UsuarioController();
  */
 routerUsuario.post('/', async (req, res) => {
     const { nome, email } = req.body;
+
     const usuario = new Usuario(nome, email);
+
     const usuarioSalvo = await usuarioCtrl.salvar(usuario);
     res.json(usuarioSalvo);
+    
 });
 
 

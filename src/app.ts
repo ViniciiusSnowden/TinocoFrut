@@ -6,6 +6,7 @@ import * as logger from 'morgan';
 import { conexaoDB } from './config/db';
 import { routerUsuario } from './route/usuario';
 import { routerLancamento } from './route/lancamento';
+import { routerProduto } from './route/produto';
 
 /**
  * Cria a aplicação
@@ -37,6 +38,7 @@ conexaoDB();
  * Configuração de rotas
  */
 
+app.use('/produto', routerProduto);
 app.use('/usuario', routerUsuario);
 app.use('/lancamento', routerLancamento);
 app.use('/', (req, res) => res.send('API do app TinocoAPI'));
