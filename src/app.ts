@@ -7,6 +7,7 @@ import { conexaoDB } from './config/db';
 import { routerUsuario } from './route/usuario';
 import { routerLancamento } from './route/lancamento';
 import { routerProduto } from './route/produto';
+import { routerFinanceiro} from './route/financeiro';
 
 /**
  * Cria a aplicação
@@ -37,7 +38,7 @@ conexaoDB();
 /**
  * Configuração de rotas
  */
-
+app.use('/financeiro', routerFinanceiro)
 app.use('/produto', routerProduto);
 app.use('/usuario', routerUsuario);
 app.use('/lancamento', routerLancamento);
