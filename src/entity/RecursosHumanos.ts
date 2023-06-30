@@ -4,8 +4,11 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
 export class RecursosHumanos {
 
     @PrimaryGeneratedColumn()
-    funcionario: string
+    id: number
 
+    @Column()
+    funcionario: string
+    
     @Column()
     salario: number
 
