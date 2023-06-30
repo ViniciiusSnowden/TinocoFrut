@@ -13,15 +13,18 @@ export class UsuarioController {
         return usuarios;
     }
 
-    // async recuperarPorId(id: number) {
-    //     const usuario = await AppDataSource.manager.findOne(Usuario, id);
-    //     return usuario;
-    // }
+    async DeletaPorId(idUsuario: number) {
+         if(this.recuperarPorId(idUsuario)){
+            const usuario = await  AppDataSource.manager.createQueryBuilder().delete().from(Usuario).where("id = :id", { id: idUsuario }).execute();
+            return usuario;
+         };
+    }
 
-    // async recuperarLancamentosDoUsuario(id: number) {
-    //     const usuario = await getManager().findOne(Usuario, id, {
-    //         relations: ['lancamentos']
-    //     });
-    //     return usuario.lancamentos;
-    // }
+    async recuperarPorId(usuarioId: number) {
+        const usuarioResponse = await AppDataSource.manager.findOne(Usuario ,{
+            where: {  id: 7}, lock: { mode: "optimistic", version: 1 }
+        })
+        return usuarioResponse;
+    }
+
 }

@@ -3,7 +3,8 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
 @Entity()
 export class Estoque {
 
- 
+    @PrimaryGeneratedColumn()
+    id: number
 
     @Column()
     setor: string
@@ -18,13 +19,13 @@ export class Estoque {
     produto: string
 
 
-    constructor(setor: string, corredor: number, prateleira:number , produto){
+    constructor(setor: string, corredor: number, prateleira:number , produto: string){
         this.setor = setor;
         this.corredor = corredor;
         this.prateleira = prateleira;
         this.produto = produto;
     }
-    }
+}
     
 
 

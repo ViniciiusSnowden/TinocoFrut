@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column  } from "typeorm"
 
 @Entity()
 export class Usuario {
@@ -12,9 +12,13 @@ export class Usuario {
     @Column()
     email: string
 
-    constructor(nome, email){
+    @Column()
+    tipo: string;
+
+    constructor(nome: string, email: string, tipo: string){
         this.nome = nome;
         this.email = email;
+        this.tipo = tipo;
     }
 
 }

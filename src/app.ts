@@ -5,7 +5,7 @@ import * as logger from 'morgan';
 
 import { conexaoDB } from './config/db';
 import { routerUsuario } from './route/usuario';
-import { routerLancamento } from './route/lancamento';
+import { routerEstoque } from './route/estoque';
 import { routerProduto } from './route/produto';
 import { routerFinanceiro} from './route/financeiro';
 
@@ -41,6 +41,6 @@ conexaoDB();
 app.use('/financeiro', routerFinanceiro)
 app.use('/produto', routerProduto);
 app.use('/usuario', routerUsuario);
-app.use('/lancamento', routerLancamento);
+app.use('/estoque', routerEstoque);
 app.use('/', (req, res) => res.send('API do app TinocoAPI'));
 
