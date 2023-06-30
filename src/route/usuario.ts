@@ -16,8 +16,6 @@ routerUsuario.post('/', async (req, res) => {
     res.json(usuarioSalvo);
     
 });
-
-
 /**
  * Serviço para recuperar todos os usuários
  */
@@ -32,8 +30,8 @@ routerUsuario.get('/', async (req, res) => {
 routerUsuario.put('/:idUsuario', async (req, res) => {
     const idUsuario = parseInt(req.params.idUsuario);
     const { nome , email, tipo} = req.body;
-    const lancamentos = await usuarioCtrl.recuperarAtualizarPorId({id: idUsuario , nome: nome ,email: email,tipo: tipo});
-    res.json(lancamentos);
+    const usuario = await usuarioCtrl.recuperarAtualizarPorId({id: idUsuario , nome: nome ,email: email,tipo: tipo});
+    res.json(usuario);
 });
 
 /**
