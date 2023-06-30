@@ -18,7 +18,6 @@ routerFinanceiro.post('/', async (req, res) => {
     
 });
 
-
 /**
  * Serviço para recuperar todos os dados financeiros
  */
@@ -27,11 +26,18 @@ routerFinanceiro.get('/', async (req, res) => {
     res.json(usuarios);
 });
 
+routerFinanceiro.put('/:idFinanceiro', async (req, res) => {
+    const id = parseInt(req.params.idFinanceiro);
+    const {comprar, vender, fiscal, relatorioCompra, relatorioVenda } = req.body;
+    const financeiro = await financeiroCtrl.recuperarAtualizarPorId({id: id , comprar: comprar, vender: vender, fiscal: fiscal, relatorioCompra: relatorioCompra, relatorioVenda: relatorioVenda});
+    res.json(financeiro);
+});
+
 /**
- * Serviço para recuperar os lançamentos de um determinado dado financeiro
+ * Serviço para deletar determinado Financeiro
  */
-routerFinanceiro.get('/lancamentos/:idUsuario', async (req, res) => {
-    // const idUsuario = parseInt(req.params.idUsuario);
-    // const lancamentos = await usuarioCtrl.recuperarLancamentosDoUsuario(idUsuario);
-    // res.json(lancamentos);
+ routerFinanceiro.delete('/:idFinanceiro', async (req, res) => {
+    const id = parseInt(req.params.idFinanceiro);
+    const financeiro = await financeiroCtrl.deletaPorId(id);
+    res.json(financeiro);
 });

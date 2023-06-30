@@ -16,17 +16,17 @@ export class Financeiro {
     fiscal: string
 
     @Column()
-    relatorio_compra: string
+    relatorioCompra: string
 
     @Column()
-    relatorio_venda: string
+    relatorioVenda: string
 
-    constructor(comprar: number, vender: number, fiscal: string, relatorio_compra: string, relatorio_venda: string){
+    constructor(comprar: number, vender: number, fiscal: string, relatorioCompra: string, relatorioVenda: string){
         this.comprar = comprar;
         this.vender = vender;
         this.fiscal = fiscal;
-        this.relatorio_compra = relatorio_compra;
-        this.relatorio_venda = relatorio_venda;
+        this.relatorioCompra = relatorioCompra;
+        this.relatorioVenda = relatorioVenda;
     }
 
 }

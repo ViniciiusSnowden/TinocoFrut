@@ -1,5 +1,6 @@
 import { Usuario } from "../entity/Usuario";
 import { AppDataSource } from "../data-source";
+import { UsuarioModel } from '../model/usuarioModel';
 
 export class UsuarioController {
 
@@ -13,17 +14,16 @@ export class UsuarioController {
         return usuarios;
     }
 
-    async DeletaPorId(idUsuario: number) {
-         if(this.recuperarPorId(idUsuario)){
+    async deletaPorId(idUsuario: number) {
             const usuario = await  AppDataSource.manager.createQueryBuilder().delete().from(Usuario).where("id = :id", { id: idUsuario }).execute();
             return usuario;
-         };
     }
 
-    async recuperarPorId(usuarioId: number) {
-        const usuarioResponse = await AppDataSource.manager.findOne(Usuario ,{
-            where: {  id: 7}, lock: { mode: "optimistic", version: 1 }
-        })
+    async recuperarAtualizarPorId(usuario: UsuarioModel) {
+        const usuarioResponse = await AppDataSource.manager.createQueryBuilder()
+        .update(Usuario).set(usuario)
+        .where("id = :id", { id: usuario.id })
+        .execute()
         return usuarioResponse;
     }
 

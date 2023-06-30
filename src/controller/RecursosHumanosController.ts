@@ -1,5 +1,6 @@
 import { AppDataSource } from "../data-source";
-import { RecursosHumanos } from '../entity/RecursoHumanos';
+import { RecursosHumanos } from '../entity/RecursosHumanos';
+import { RecursosHumanosModel } from "../model/RecursosHumanosModel";
 
 export class RecursosHumanosController {
 
@@ -9,19 +10,21 @@ export class RecursosHumanosController {
     }
 
     async recuperarTodos() {
-        const  recursosHumanoss = await AppDataSource.manager.find( RecursosHumanos);
+        const  recursosHumanoss = await AppDataSource.manager.find(RecursosHumanos);
         return  recursosHumanoss;
     }
 
-    // async recuperarPorId(id: number) {
-    //     const  RecursosHumanos = await AppDataSource.manager.findOne( RecursosHumanos, id);
-    //     return  RecursosHumanos;
-    // }
+    async deletaPorId(idRecursosHumanos: number) {
+        const recursosHumanosRes = await  AppDataSource.manager.createQueryBuilder().delete().from(RecursosHumanos).where("id = :id", { id: idRecursosHumanos }).execute();
+        return recursosHumanosRes;
+    }
 
-    // async recuperarLancamentosDo RecursosHumanos(id: number) {
-    //     const  RecursosHumanos = await getManager().findOne( RecursosHumanos, id, {
-    //         relations: ['lancamentos']
-    //     });
-    //     return usuario.lancamentos;
-    // }
+    async recuperarAtualizarPorId(recursosHumanos: RecursosHumanosModel) {
+        const recursosHumanosResponse = await AppDataSource.manager.createQueryBuilder()
+        .update(RecursosHumanos).set(recursosHumanos)
+        .where("id = :id", { id: recursosHumanos.id })
+        .execute()
+        return recursosHumanosResponse;
+    }
+
 }
