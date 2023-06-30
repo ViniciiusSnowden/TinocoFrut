@@ -21,10 +21,11 @@
 # 📖 Sobre
 Projeto feito para gerenciar a venda do tonico.
 
-Aluno:
-Paulo Vinicius - 0126578
-Fabrico
-Augusto 
+
+Grupo:
+Paulo Vinicius - 01265978
+Fabrício de Lima - 01559091
+Augusto Belém - 01503646
 Rhana Lopes
 
 

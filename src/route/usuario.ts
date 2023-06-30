@@ -9,9 +9,9 @@ const usuarioCtrl = new UsuarioController();
  * Serviço pra salvar um novo usuário
  */
 routerUsuario.post('/', async (req, res) => {
-    const { nome, email } = req.body;
+    const { nome, email, tipo} = req.body;
 
-    const usuario = new Usuario(nome, email);
+    const usuario = new Usuario(nome, email, tipo);
 
     const usuarioSalvo = await usuarioCtrl.salvar(usuario);
     res.json(usuarioSalvo);

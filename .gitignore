@@ -5,3 +5,5 @@ build/
 tmp/
 temp/
 pgdata/
+./docker-compose.yml
+docker-compose.yml
