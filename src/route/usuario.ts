@@ -1,6 +1,7 @@
 import { Usuario } from '../entity/Usuario';
 import { Router } from 'express';
 import { UsuarioController } from '../controller/UsuarioController';
+import { UsuarioModel } from '../model/usuarioModel';
 
 export const routerUsuario = Router();
 const usuarioCtrl = new UsuarioController();
@@ -10,9 +11,7 @@ const usuarioCtrl = new UsuarioController();
  */
 routerUsuario.post('/', async (req, res) => {
     const { nome, email, tipo} = req.body;
-
     const usuario = new Usuario(nome, email, tipo);
-
     const usuarioSalvo = await usuarioCtrl.salvar(usuario);
     res.json(usuarioSalvo);
     
@@ -28,10 +27,20 @@ routerUsuario.get('/', async (req, res) => {
 });
 
 /**
- * Serviço para recuperar os lançamentos de um determinado usuário
+ * Serviço para Autalizar de um determinado usuário
  */
-routerUsuario.get('/lancamentos/:idUsuario', async (req, res) => {
-    // const idUsuario = parseInt(req.params.idUsuario);
-    // const lancamentos = await usuarioCtrl.recuperarLancamentosDoUsuario(idUsuario);
-    // res.json(lancamentos);
+routerUsuario.put('/:idUsuario', async (req, res) => {
+    const idUsuario = parseInt(req.params.idUsuario);
+    const { nome , email, tipo} = req.body;
+    const lancamentos = await usuarioCtrl.recuperarAtualizarPorId({id: idUsuario , nome: nome ,email: email,tipo: tipo});
+    res.json(lancamentos);
+});
+
+/**
+ * Serviço para deletar determinado usuário
+ */
+routerUsuario.delete('/:idUsuario', async (req, res) => {
+    const idUsuario = parseInt(req.params.idUsuario);
+    const usuario = await usuarioCtrl.deletaPorId(idUsuario);
+    res.json(usuario);
 });

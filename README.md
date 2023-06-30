@@ -22,11 +22,11 @@
 Projeto feito para gerenciar a venda do tonico.
 
 
-Grupo:
-Paulo Vinicius - 01265978
-Fabrício de Lima - 01559091
-Augusto Belém - 01503646
-Rhana Lopes
+- Grupo:
+  - Paulo Vinicius - 01265978
+  - Fabrício de Lima - 01559091
+  - Augusto Belém - 01503646
+  - Rhana Lopes
 
 
 <h1>🛠 Tecnologias</h1>
@@ -41,6 +41,14 @@ Rhana Lopes
   - Docker
   - Banco de dados: Postgres
 
+<h1>🛠 Instruções</h1>
+
+Instruções para roda o projeto em ambiente local:
+ - Instale o docker ou postgres
+ - Execute docker-compose up -d : "no diretorio do projeto Para subir o banco de dados em container""
+  - Execute npm i  :"no diretorio do projeto"
+  - Execute npm run dev : Roda em modo dev ou 
+ - Execute npm start : em produção.  
 
 
 

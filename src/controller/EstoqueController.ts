@@ -13,15 +13,4 @@ export class EstoqueController {
         return Estoques;
     }
 
-    // async recuperarPorId(id: number) {
-    //     const usuario = await AppDataSource.manager.findOne(Usuario, id);
-    //     return usuario;
-    // }
-
-    // async recuperarLancamentosDoUsuario(id: number) {
-    //     const usuario = await getManager().findOne(Usuario, id, {
-    //         relations: ['lancamentos']
-    //     });
-    //     return usuario.lancamentos;
-    // }
 }

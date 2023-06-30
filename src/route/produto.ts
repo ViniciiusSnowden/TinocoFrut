@@ -28,10 +28,23 @@ routerProduto.get('/', async (req, res) => {
 });
 
 /**
- * Serviço para recuperar os lançamentos de um determinado usuário
+ * Serviço para recuperar os lançamentos de um determinado Produto
  */
-routerProduto.get('/lancamentos/:idUsuario', async (req, res) => {
-    // const idUsuario = parseInt(req.params.idUsuario);
-    // const lancamentos = await usuarioCtrl.recuperarLancamentosDoUsuario(idUsuario);
-    // res.json(lancamentos);
+/**
+ * Serviço para Autalizar de um determinado Produto
+ */
+ routerProduto.put('/:idProduto', async (req, res) => {
+    const id = parseInt(req.params.idProduto);
+    const {nome, descricao, preco, categoria, tipo, quantidadeEstoque,} = req.body;
+    const produto = await produtoCtrl.recuperarAtualizarPorId({id: id , nome: nome, descricao: descricao,preco: preco, categoria: categoria, tipo: tipo, quantidadeEstoque: quantidadeEstoque});
+    res.json(produto);
+});
+
+/**
+ * Serviço para deletar determinado Produto
+ */
+routerProduto.delete('/:idProduto', async (req, res) => {
+    const id = parseInt(req.params.idProduto);
+    const produto = await produtoCtrl.deletaPorId(id);
+    res.json(produto);
 });
